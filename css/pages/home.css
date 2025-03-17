@@ -5,11 +5,11 @@
   margin-bottom: 20px;
 }
 
-/* 記事グリッド */
+/* 記事グリッド - 横3列レイアウト */
 .article-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(3, 1fr); /* 横3列を強制 */
+  gap: 20px;
   margin-top: 20px;
 }
 
@@ -22,6 +22,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
 }
 
 .article-card:hover {
@@ -30,7 +31,7 @@
 }
 
 .article-image {
-  height: 200px;
+  height: 180px; /* 画像の高さを統一 */
   overflow: hidden;
 }
 
@@ -54,11 +55,11 @@
 }
 
 .article-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   margin-bottom: 10px;
   line-height: 1.4;
-  height: 50px;
+  height: 45px; /* タイトルの高さを統一 */
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -95,7 +96,7 @@
 .article-tags .tag {
   background-color: #f1f1f1;
   color: #666;
-  padding: 4px 8px;
+  padding: 3px 6px;
   border-radius: 4px;
   font-size: 12px;
   margin-right: 5px;
@@ -132,12 +133,12 @@
 
 .price-value {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
   color: #333;
 }
 
 .price-reward {
-  font-size: 12px;
+  font-size: 11px;
   color: #666;
 }
 
@@ -148,8 +149,8 @@
 }
 
 .user-avatar {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   overflow: hidden;
   margin-right: 10px;
@@ -166,12 +167,12 @@
 }
 
 .user-name {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 }
 
 .article-date {
-  font-size: 12px;
+  font-size: 11px;
   color: #666;
 }
 
@@ -179,7 +180,7 @@
   background: none;
   border: none;
   color: #ccc;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   transition: color 0.3s;
 }
@@ -198,9 +199,15 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* モバイル対応 */
+/* レスポンシブ対応 */
+@media (max-width: 992px) {
+  .article-grid {
+    grid-template-columns: repeat(2, 1fr); /* タブレットでは2列 */
+  }
+}
+
 @media (max-width: 768px) {
   .article-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* モバイルでは1列 */
   }
 }
