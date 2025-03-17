@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>記事作成 | Tips Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ImageUploader.css">
+    <!-- リッチテキストエディタのCDN -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://via.placeholder.com/150x50?text=Tips+Clone" alt="Tips Clone">
+                </a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="キーワードを入力して検索">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">ログイン</a>
+                <a href="register.html" class="btn-register">新規登録</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="create-article-container">
+                <h1>新しい記事を作成</h1>
+                
+                <div id="error-messages"></div>
+                
+                <form id="article-form">
+                    <div class="form-group">
+                        <label for="title">タイトル</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">カテゴリー</label>
+                        <select id="category" name="category" required>
+                            <option value="">カテゴリーを選択</option>
+                            <option value="コラム">コラム</option>
+                            <option value="小説">小説</option>
+                            <option value="エンタメ">エンタメ</option>
+                            <option value="音楽">音楽</option>
+                            <option value="アート">アート</option>
+                            <option value="マンガ・アニメ">マンガ・アニメ</option>
+                            <option value="ゲーム">ゲーム</option>
+                            <option value="ホビー">ホビー</option>
+                            <option value="サブカルチャー">サブカルチャー</option>
+                            <option value="ライフスタイル">ライフスタイル</option>
+                            <option value="グルメ">グルメ</option>
+                            <option value="アウトドア">アウトドア</option>
+                            <option value="スポーツ">スポーツ</option>
+                            <option value="AIテクノロジー">AIテクノロジー</option>
+                            <option value="その他テクノロジー">その他テクノロジー</option>
+                            <option value="マネー">マネー</option>
+                            <option value="ビジネス">ビジネス</option>
+                            <option value="モノづくり">モノづくり</option>
+                            <option value="デザイン">デザイン</option>
+                            <option value="結婚">結婚</option>
+                            <option value="恋愛">恋愛</option>
+                            <option value="美容・健康">美容・健康</option>
+                            <option value="その他">その他</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>アイキャッチ画像</label>
+                        <div id="image-uploader"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editor">記事の内容</label>
+                        <div id="editor" style="height: 300px;"></div>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="is-free" name="is-free">
+                        <label for="is-free">無料記事として公開する</label>
+                    </div>
+                    
+                    <div class="form-group price-group">
+                        <label for="price">価格（円）</label>
+                        <input type="number" id="price" name="price" min="1" value="1000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tags">タグ（カンマ区切り）</label>
+                        <input type="text" id="tags" name="tags" placeholder="例: Twitter, 副業, マーケティング">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">記事を投稿する</button>
+                        <a href="index.html" class="btn-secondary">キャンセル</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">ホーム</a>
+                <a href="#">記事</a>
+                <a href="#">ご利用ガイド</a>
+                <a href="#">プライバシー</a>
+                <a href="#">ご利用規約</a>
+                <a href="#">運営会社</a>
+                <a href="#">お問い合わせ</a>
+            </div>
+            <div class="footer-logo">
+                <img src="https://via.placeholder.com/120x40?text=Tips+Clone" alt="Tips Clone">
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script src="js/ImageUploader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // リッチテキストエディタの初期化
+            const quill = new Quill('#editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                        [{ 'color': [] }, { 'background': [] }],
+                        ['link', 'image'],
+                        ['clean']
+                    ]
+                }
+            });
+            
+            // 画像アップローダーの初期化
+            const imageUploader = new ImageUploader('image-uploader');
+            
+            // 無料/有料切り替え
+            const isFreeCheckbox = document.getElementById('is-free');
+            const priceGroup = document.querySelector('.price-group');
+            
+            isFreeCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    priceGroup.style.display = 'none';
+                } else {
+                    priceGroup.style.display = 'block';
+                }
+            });
+            
+            // フォーム送信処理
+            const articleForm = document.getElementById('article-form');
+            const errorMessages = document.getElementById('error-messages');
+            
+            articleForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                errorMessages.innerHTML = '';
+                
+                const title = document.getElementById('title').value;
+                const category = document.getElementById('category').value;
+                const content = quill.root.innerHTML;
+                const isFree = document.getElementById('is-free').checked;
+                const price = document.getElementById('price').value;
+                const tags = document.getElementById('tags').value;
+                const featuredImage = imageUploader.getFile();
+                
+                // バリデーション
+                const errors = [];
+                
+                if (!title.trim()) {
+                    errors.push('タイトルを入力してください');
+                }
+                
+                if (!category) {
+                    errors.push('カテゴリーを選択してください');
+                }
+                
+                if (!content || content === '<p><br></p>') {
+                    errors.push('記事の内容を入力してください');
+                }
+                
+                if (!isFree && (price <= 0 || isNaN(price))) {
+                    errors.push('有効な価格を入力してください');
+                }
+                
+                if (!featuredImage) {
+                    errors.push('アイキャッチ画像をアップロードしてください');
+                }
+                
+                if (errors.length > 0) {
+                    errorMessages.innerHTML = `
+                        <div class="error-alert">
+                            <ul>
+                                ${errors.map(error => `<li>${error}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // フォームデータの作成 (実際のAPI送信用)
+                const formData = new FormData();
+                formData.append('title', title);
+                formData.append('category', category);
+                formData.append('content', content);
+                formData.append('isFree', isFree);
+                if (!isFree) {
+                    formData.append('price', price);
+                }
+                formData.append('tags', tags);
+                if (featuredImage) {
+                    formData.append('featuredImage', featuredImage);
+                }
+                
+                // ここでAPIリクエストを送信する代わりに、成功メッセージを表示
+                console.log('記事データ:', {
+                    title,
+                    category,
+                    content,
+                    isFree,
+                    price: isFree ? 0 : parseInt(price),
+                    tags,
+                    hasImage: !!featuredImage
+                });
+                
+                alert('記事が投稿されました！（デモ - 実際には保存されていません）');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>
