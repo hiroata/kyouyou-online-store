@@ -1,4 +1,4 @@
-// js/common.js
+// common.js
 const TipsApp = {
   // 認証関連
   auth: {
@@ -75,17 +75,66 @@ const TipsApp = {
           
           // お気に入り状態を切り替え
           const icon = this.querySelector('i');
-          if (icon.classList.contains('far')) {
-            icon.classList.remove('far');
-            icon.classList.add('fas');
+          if (icon.classList.contains('fa-regular')) {
+            icon.classList.remove('fa-regular');
+            icon.classList.add('fa-solid');
             this.classList.add('active');
           } else {
-            icon.classList.remove('fas');
-            icon.classList.add('far');
+            icon.classList.remove('fa-solid');
+            icon.classList.add('fa-regular');
             this.classList.remove('active');
           }
         });
       });
+    },
+    
+    // タブ機能
+    initTabs() {
+      const tabs = document.querySelectorAll('.tab');
+      if (tabs.length) {
+        tabs.forEach(tab => {
+          tab.addEventListener('click', function() {
+            // 現在のアクティブタブを非アクティブに
+            document.querySelector('.tab.active').classList.remove('active');
+            // クリックされたタブをアクティブに
+            this.classList.add('active');
+          });
+        });
+      }
+    },
+    
+    // ソートドロップダウン
+    initSortDropdown() {
+      const sortButton = document.querySelector('.sort-button');
+      const sortMenu = document.querySelector('.sort-menu');
+      
+      if (sortButton && sortMenu) {
+        sortButton.addEventListener('click', () => {
+          sortMenu.classList.toggle('active');
+        });
+        
+        // クリック外で閉じる
+        document.addEventListener('click', (e) => {
+          if (!sortButton.contains(e.target) && !sortMenu.contains(e.target)) {
+            sortMenu.classList.remove('active');
+          }
+        });
+      }
+    },
+    
+    // フィルターボタン
+    initFilterButtons() {
+      const filterButtons = document.querySelectorAll('.filter-button');
+      if (filterButtons.length) {
+        filterButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            // 現在のアクティブフィルターを非アクティブに
+            document.querySelector('.filter-button.active').classList.remove('active');
+            // クリックされたフィルターをアクティブに
+            this.classList.add('active');
+          });
+        });
+      }
     }
   },
   
@@ -97,6 +146,9 @@ const TipsApp = {
     // ページ固有の初期化処理
     if (document.querySelector('.article-grid')) {
       this.ui.initFavoriteButtons();
+      this.ui.initSortDropdown();
+      this.ui.initFilterButtons();
+      this.ui.initTabs();
     }
   }
 };
@@ -105,75 +157,3 @@ const TipsApp = {
 document.addEventListener('DOMContentLoaded', () => {
   TipsApp.init();
 });
-// js/common.js に追加
-// UI機能拡張
-ui: {
-  // 既存のコード...
-
-  // タブ機能
-  initTabs() {
-    const tabs = document.querySelectorAll('.tab');
-    if (tabs.length) {
-      tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-          // 現在のアクティブタブを非アクティブに
-          document.querySelector('.tab.active').classList.remove('active');
-          // クリックされたタブをアクティブに
-          this.classList.add('active');
-          
-          // ここにコンテンツ切り替えのロジックを追加
-        });
-      });
-    }
-  },
-  
-  // ソートドロップダウン
-  initSortDropdown() {
-    const sortButton = document.querySelector('.sort-button');
-    const sortMenu = document.querySelector('.sort-menu');
-    
-    if (sortButton && sortMenu) {
-      sortButton.addEventListener('click', () => {
-        sortMenu.classList.toggle('active');
-      });
-      
-      // クリック外で閉じる
-      document.addEventListener('click', (e) => {
-        if (!sortButton.contains(e.target) && !sortMenu.contains(e.target)) {
-          sortMenu.classList.remove('active');
-        }
-      });
-    }
-  },
-  
-  // フィルターボタン
-  initFilterButtons() {
-    const filterButtons = document.querySelectorAll('.filter-button');
-    if (filterButtons.length) {
-      filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          // 現在のアクティブフィルターを非アクティブに
-          document.querySelector('.filter-button.active').classList.remove('active');
-          // クリックされたフィルターをアクティブに
-          this.classList.add('active');
-          
-          // ここにフィルタリングロジックを追加
-        });
-      });
-    }
-  }
-},
-
-// init関数を更新
-init() {
-  // 共通初期化処理
-  this.ui.updateAuthUI();
-  
-  // ページ固有の初期化処理
-  if (document.querySelector('.article-grid')) {
-    this.ui.initFavoriteButtons();
-    this.ui.initSortDropdown();
-    this.ui.initFilterButtons();
-    this.ui.initTabs();
-  }
-}
