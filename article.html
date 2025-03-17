@@ -3,93 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>記事詳細 - Tips Clone</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/article.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>記事タイトル | Tips Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages/article.css">
+    <style>
+        /* 記事詳細ページ固有のスタイル */
+        .article-header {
+            margin-bottom: 30px;
+        }
+        
+        .article-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .article-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info .author-name {
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+        
+        .article-date {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .article-featured-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            max-height: 500px;
+            object-fit: cover;
+        }
+        
+        .article-content {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .article-content p {
+            margin-bottom: 20px;
+        }
+        
+        .article-content h2 {
+            font-size: 24px;
+            margin: 30px 0 15px;
+        }
+        
+        .article-content h3 {
+            font-size: 20px;
+            margin: 25px 0 15px;
+        }
+        
+        .article-content ul, .article-content ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .article-content li {
+            margin-bottom: 10px;
+        }
+        
+        .article-sidebar {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .article-price-card {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .price-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .price-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .price-tax {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .btn-purchase {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #ffc107;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 10px;
+        }
+        
+        .btn-purchase:hover {
+            background-color: #ffb300;
+        }
+        
+        .reward-info {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <header id="header">
+    <!-- ヘッダー -->
+    <header>
         <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>Tips Clone</span>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://via.placeholder.com/150x50?text=Tips+Clone" alt="Tips Clone">
                 </a>
-                <div class="header-search">
-                    <form id="search-form">
-                        <input type="text" placeholder="キーワードを入力して探す" name="keyword">
-                        <button type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
-                <div class="header-auth">
-                    <a href="#" class="login-btn">ログイン</a>
-                    <a href="#" class="register-btn">新規登録</a>
-                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="キーワードを入力して検索">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="auth-buttons" id="auth-buttons">
+                <a href="login.html" class="btn-login">ログイン</a>
+                <a href="register.html" class="btn-register">新規登録</a>
             </div>
         </div>
     </header>
 
     <main>
-        <div class="container main-container">
-            <!-- サイドバー -->
-            <aside class="sidebar">
-                <div class="sidebar-inner">
-                    <h2>カテゴリー</h2>
-                    <ul class="category-list">
-                        <li class="active"><a href="index.html">すべて</a></li>
-                        <li><a href="#">コラム</a></li>
-                        <li><a href="#">小説</a></li>
-                        <li><a href="#">エンタメ</a></li>
-                        <li><a href="#">音楽</a></li>
-                        <li><a href="#">アート</a></li>
-                        <li><a href="#">マンガ・アニメ</a></li>
-                        <li><a href="#">ゲーム</a></li>
-                        <li><a href="#">ホビー</a></li>
-                        <li><a href="#">サブカルチャー</a></li>
-                        <li><a href="#">ライフスタイル</a></li>
-                        <li><a href="#">グルメ</a></li>
-                        <li><a href="#">アウトドア</a></li>
-                        <li><a href="#">スポーツ</a></li>
-                        <li><a href="#">AIテクノロジー</a></li>
-                        <li><a href="#">その他テクノロジー</a></li>
-                        <li><a href="#">マネー</a></li>
-                        <li><a href="#">ビジネス</a></li>
-                        <li><a href="#">モノづくり</a></li>
-                        <li><a href="#">デザイン</a></li>
-                        <li><a href="#">結婚</a></li>
-                        <li><a href="#">恋愛</a></li>
-                        <li><a href="#">美容・健康</a></li>
-                        <li><a href="#">その他</a></li>
-                    </ul>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">ホーム</a> > <a href="#">ビジネス</a> > 記事タイトル
+            </div>
+
+            <div class="content-layout">
+                <div class="main-content">
+                    <article class="article-detail">
+                        <div class="article-header">
+                            <h1 class="article-title">【革命】Threads完全攻略マニュアル</h1>
+                            <div class="article-meta">
+                                <div class="article-author">
+                                    <div class="author-avatar">
+                                        <img src="https://static.tips.jp/2024/08/31/BtfPCKhyU5W6LA90HfVgadfFxFKBZqeR.png" alt="寝稼ぎさん">
+                                    </div>
+                                    <div class="author-info">
+                                        <div class="author-name">寝稼ぎさん</div>
+                                        <div class="article-date">2024/10/19 20:44</div>
+                                    </div>
+                                </div>
+                                <div class="article-rating">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-value">5</span>
+                                    <span class="rating-count">(142件)</span>
+                                </div>
+                            </div>
+                            <div class="article-tags">
+                                <span class="tag">#Twitter</span>
+                                <span class="tag">#副業</span>
+                                <span class="tag">#SNSマーケティング</span>
+                            </div>
+                        </div>
+
+                        <img src="https://static.tips.jp/2024/10/19/e1hQomaywKHxZLHvnSJlki474ixp6e4c.png" class="article-featured-image" alt="Threads完全攻略マニュアル">
+
+                        <div class="article-content">
+                            <h2>はじめに</h2>
+                            <p>この記事はデモ用のサンプルコンテンツです。実際の「Threads完全攻略マニュアル」の内容ではありません。</p>
+                            
+                            <h2>Threadsとは</h2>
+                            <p>Threadsは、Instagramから派生したテキストベースのSNSで、Twitterの代替として急速に成長しています。多くのインフルエンサーやブランドがこのプラットフォームに参入し、新たなマーケティング戦略を展開しています。</p>
+                            
+                            <h2>本マニュアルで学べること</h2>
+                            <ul>
+                                <li>フォロワー数を効率的に増やす方法</li>
+                                <li>エンゲージメントを高めるコンテンツ作成のコツ</li>
+                                <li>Threadsのアルゴリズムを理解し、活用する方法</li>
+                                <li>収益化の実践的なアプローチ</li>
+                                <li>時間効率の良いアカウント運用テクニック</li>
+                            </ul>
+                            
+                            <h2>まとめ</h2>
+                            <p>Threadsを活用してビジネスを拡大するためには、プラットフォームの特性を理解し、一貫した戦略を立てることが重要です。本マニュアルでは、多くの実践例と具体的な手順を提供しています。</p>
+                        </div>
+                    </article>
                 </div>
-            </aside>
-
-            <!-- メインコンテンツ -->
-            <div class="main-content">
-                <!-- パンくずリスト -->
-                <nav class="breadcrumb">
-                    <ol>
-                        <li><a href="index.html">ホーム</a></li>
-                        <li id="category-breadcrumb"><a href="#" id="category-link">カテゴリー</a></li>
-                        <li id="article-title-breadcrumb">記事タイトル</li>
-                    </ol>
-                </nav>
-
-                <!-- 記事詳細 -->
-                <div class="article-detail-wrapper" id="article-detail">
-                    <!-- コンテンツはJavaScriptで動的に生成 -->
-                    <div class="article-loading">
-                        <p>読み込み中...</p>
-                    </div>
-                </div>
-
-                <!-- おすすめ記事 -->
-                <div class="recommended-articles">
-                    <h2>おすすめの記事</h2>
-                    <div class="article-grid" id="recommended-grid">
-                        <!-- コンテンツはJavaScriptで動的に生成 -->
+                
+                <div class="sidebar">
+                    <div class="article-sidebar">
+                        <div class="article-price-card">
+                            <div class="price-label">価格</div>
+                            <div class="price-value">¥4,980</div>
+                            <div class="price-tax">(税込)</div>
+                            <button class="btn-purchase">購入する</button>
+                            <div class="reward-info">購入で1%獲得 (49円相当)</div>
+                            <div class="article-claps">
+                                <i class="fas fa-hands-clapping clap-icon"></i>
+                                <span class="clap-count">1,146人が応援</span>
+                            </div>
+                        </div>
+                        
+                        <div class="article-toc">
+                            <h3>目次</h3>
+                            <ul>
+                                <li><a href="#">はじめに</a></li>
+                                <li><a href="#">Threadsとは</a></li>
+                                <li><a href="#">本マニュアルで学べること</a></li>
+                                <li><a href="#">まとめ</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -99,10 +268,10 @@
     <footer>
         <div class="container">
             <div class="footer-links">
-                <a href="index.html">ホーム</a>
+                <a href="#">ホーム</a>
                 <a href="#">記事</a>
                 <a href="#">アフィリエイト</a>
-                <a href="#">ご利用ガイド（ヘルプ）</a>
+                <a href="#">ご利用ガイド</a>
                 <a href="#">プラス会員</a>
                 <a href="#">プライバシー</a>
                 <a href="#">ご利用規約</a>
@@ -111,20 +280,12 @@
                 <a href="#">お問い合わせ</a>
                 <a href="#">特商法表記</a>
             </div>
-            <div class="footer-social">
-                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-            </div>
             <div class="footer-logo">
-                <a href="index.html">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>Tips Clone</span>
-                </a>
+                <img src="https://via.placeholder.com/120x40?text=Tips+Clone" alt="Tips Clone">
             </div>
         </div>
     </footer>
 
-    <script src="js/articles-data.js"></script>
-    <script src="js/article.js"></script>
+    <script src="js/common.js"></script>
 </body>
 </html>
