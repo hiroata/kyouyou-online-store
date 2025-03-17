@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規登録 | Tips Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 200px);
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .auth-card {
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .auth-card h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #444;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group input.error {
+            border-color: #ff3b30;
+        }
+        
+        .error-message {
+            color: #ff3b30;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        
+        .auth-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ffc107;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .auth-button:hover {
+            background-color: #ffb300;
+        }
+        
+        .auth-button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .auth-footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+        
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-alert {
+            background-color: #ffe0e0;
+            border: 1px solid #ff9999;
+            color: #cc0000;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://via.placeholder.com/150x50?text=Tips+Clone" alt="Tips Clone">
+                </a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="キーワードを入力して検索">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">ログイン</a>
+                <a href="register.html" class="btn-register">新規登録</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="auth-container">
+            <div class="auth-card">
+                <h2>新規登録</h2>
+                
+                <div id="error-messages"></div>
+                
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="username">ユーザー名</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">パスワード</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">パスワード（確認）</label>
+                        <input
+                            type="password"
+                            id="confirm-password"
+                            name="confirm-password"
+                            required
+                        >
+                    </div>
+                    
+                    <button type="submit" class="auth-button" id="submit-btn">登録する</button>
+                </form>
+                
+                <div class="auth-footer">
+                    すでにアカウントをお持ちですか？ <a href="login.html">ログイン</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">ホーム</a>
+                <a href="#">記事</a>
+                <a href="#">ご利用ガイド</a>
+                <a href="#">プライバシー</a>
+                <a href="#">ご利用規約</a>
+                <a href="#">運営会社</a>
+                <a href="#">お問い合わせ</a>
+            </div>
+            <div class="footer-logo">
+                <img src="https://via.placeholder.com/120x40?text=Tips+Clone" alt="Tips Clone">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerForm = document.getElementById('register-form');
+            const errorMessages = document.getElementById('error-messages');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                errorMessages.innerHTML = '';
+                
+                const username = document.getElementById('username').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                
+                // バリデーション
+                const errors = [];
+                
+                if (!username.trim()) {
+                    errors.push('ユーザー名を入力してください');
+                }
+                
+                if (!email.trim()) {
+                    errors.push('メールアドレスを入力してください');
+                } else if (!/\S+@\S+\.\S+/.test(email)) {
+                    errors.push('有効なメールアドレスを入力してください');
+                }
+                
+                if (!password) {
+                    errors.push('パスワードを入力してください');
+                } else if (password.length < 6) {
+                    errors.push('パスワードは6文字以上である必要があります');
+                }
+                
+                if (password !== confirmPassword) {
+                    errors.push('パスワードが一致しません');
+                }
+                
+                if (errors.length > 0) {
+                    errorMessages.innerHTML = `
+                        <div class="error-alert">
+                            <ul>
+                                ${errors.map(error => `<li>${error}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // 登録処理（デモ）
+                submitBtn.disabled = true;
+                submitBtn.textContent = '登録中...';
+                
+                setTimeout(() => {
+                    // 成功メッセージ
+                    alert('登録が完了しました！（デモ - 実際には保存されていません）');
+                    
+                    // ログインページへリダイレクト
+                    window.location.href = 'login.html';
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
