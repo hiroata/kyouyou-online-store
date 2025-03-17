@@ -171,6 +171,50 @@ footer {
   color: #333;
 }
 
+.sort-dropdown {
+  position: relative;
+}
+
+.sort-button {
+  padding: 8px 15px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.sort-button i {
+  margin-left: 8px;
+}
+
+.sort-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 150px;
+  z-index: 10;
+  display: none;
+}
+
+.sort-menu.active {
+  display: block;
+}
+
+.sort-menu a {
+  display: block;
+  padding: 8px 15px;
+  transition: background-color 0.3s;
+}
+
+.sort-menu a:hover {
+  background-color: #f5f5f5;
+}
+
 /* ボタン */
 .btn-primary {
   background-color: #ffc107;
@@ -181,6 +225,7 @@ footer {
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s;
+  display: inline-block;
 }
 
 .btn-primary:hover {
@@ -238,6 +283,41 @@ footer {
   color: #333;
 }
 
+.page-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-item.dots {
+  border: none;
+  background: none;
+}
+
+/* ユーザードロップダウン */
+.user-dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.user-dropdown .user-name {
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #f1f1f1;
+}
+
 /* メディアクエリ */
 @media (max-width: 768px) {
   header .container {
@@ -265,75 +345,18 @@ footer {
   
   .filter-group {
     margin-bottom: 15px;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 5px;
   }
-}
-/* components.css に追加 */
-/* ヘッダーのユーザードロップダウン */
-.user-dropdown {
-  display: flex;
-  align-items: center;
-}
 
-.user-dropdown .user-name {
-  margin-right: 15px;
-  font-weight: 500;
-}
+  .sort-dropdown {
+    width: 100%;
+  }
 
-.logout-btn {
-  background: none;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px 10px;
-  cursor: pointer;
-  color: #666;
-  transition: all 0.3s;
-}
-
-.logout-btn:hover {
-  background-color: #f1f1f1;
-}
-
-/* ソートドロップダウン修正 */
-.sort-dropdown {
-  position: relative;
-}
-
-.sort-button {
-  display: flex;
-  align-items: center;
-  padding: 8px 15px;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.sort-button i {
-  margin-left: 8px;
-}
-
-.sort-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: white;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 150px;
-  z-index: 10;
-  display: none;
-}
-
-.sort-menu.active {
-  display: block;
-}
-
-.sort-menu a {
-  display: block;
-  padding: 8px 15px;
-  transition: background-color 0.3s;
-}
-
-.sort-menu a:hover {
-  background-color: #f5f5f5;
+  .sort-button {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
