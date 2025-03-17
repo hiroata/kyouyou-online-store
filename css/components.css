@@ -1,0 +1,269 @@
+/* components.css - 再利用可能なコンポーネント */
+
+/* ヘッダー */
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.search-bar {
+  display: flex;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  font-size: 14px;
+}
+
+.search-bar button {
+  padding: 8px 15px;
+  background-color: #ffc107;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.auth-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.btn-login {
+  color: #666;
+  margin-right: 15px;
+}
+
+.btn-register {
+  background-color: #ffc107;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* フッター */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 0;
+  margin-top: 50px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.footer-links a {
+  margin: 0 15px;
+  color: #ddd;
+  font-size: 14px;
+}
+
+.footer-logo {
+  text-align: center;
+}
+
+/* サイドバー */
+.sidebar-box {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar-box h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.category-list li {
+  margin-bottom: 10px;
+}
+
+.category-list li a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.category-list li a:hover {
+  background-color: #f5f5f5;
+}
+
+.category-list li.active a {
+  background-color: #ffc107;
+  color: #333;
+  font-weight: 500;
+}
+
+/* タブとフィルター */
+.tabs {
+  display: flex;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 12px 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.tab.active {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-group {
+  display: flex;
+}
+
+.filter-button {
+  padding: 8px 15px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter-button.active {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #333;
+}
+
+/* ボタン */
+.btn-primary {
+  background-color: #ffc107;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #ffb300;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #666;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #f5f5f5;
+}
+
+/* パンくずリスト */
+.breadcrumb {
+  margin: 20px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* ページネーション */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.page-item {
+  margin: 0 5px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.page-item.active {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #333;
+}
+
+/* メディアクエリ */
+@media (max-width: 768px) {
+  header .container {
+    flex-direction: column;
+  }
+  
+  .logo {
+    margin-bottom: 15px;
+  }
+  
+  .search-bar {
+    margin: 15px 0;
+    width: 100%;
+  }
+  
+  .auth-buttons {
+    width: 100%;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .filters {
+    flex-direction: column;
+  }
+  
+  .filter-group {
+    margin-bottom: 15px;
+  }
+}
