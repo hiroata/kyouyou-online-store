@@ -3,41 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tips Clone - オンライン記事販売サイト</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Tips Clone - 知識と経験を共有するプラットフォーム</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header id="header">
+    <header>
         <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>Tips Clone</span>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://via.placeholder.com/150x50?text=Tips+Clone" alt="Tips Clone">
                 </a>
-                <div class="header-search">
-                    <form id="search-form">
-                        <input type="text" placeholder="キーワードを入力して探す" name="keyword">
-                        <button type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
-                <div class="header-auth">
-                    <a href="#" class="login-btn">ログイン</a>
-                    <a href="#" class="register-btn">新規登録</a>
-                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="キーワードを入力して検索">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="auth-buttons" id="auth-buttons">
+                <a href="login.html" class="btn-login">ログイン</a>
+                <a href="register.html" class="btn-register">新規登録</a>
             </div>
         </div>
     </header>
 
     <main>
-        <div class="container main-container">
-            <!-- サイドバー -->
-            <aside class="sidebar">
-                <div class="sidebar-inner">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">ホーム</a> > 「すべて」の記事
+            </div>
+
+            <div class="page-title">
+                <h1>「すべて」の記事</h1>
+            </div>
+
+            <div class="content-layout">
+                <div class="sidebar">
                     <h2>カテゴリー</h2>
                     <ul class="category-list">
-                        <li class="active"><a href="index.html">すべて</a></li>
+                        <li class="active"><a href="#">すべて</a></li>
                         <li><a href="#">コラム</a></li>
                         <li><a href="#">小説</a></li>
                         <li><a href="#">エンタメ</a></li>
@@ -63,73 +66,178 @@
                         <li><a href="#">その他</a></li>
                     </ul>
                 </div>
-            </aside>
 
-            <!-- メインコンテンツ -->
-            <div class="main-content">
-                <!-- パンくずリスト -->
-                <nav class="breadcrumb">
-                    <ol>
-                        <li><a href="index.html">ホーム</a></li>
-                        <li>「すべて」の記事</li>
-                    </ol>
-                </nav>
-
-                <!-- ページタイトルと検索 -->
-                <div class="page-header">
-                    <h1>「すべて」の記事</h1>
-                    <div class="page-search">
-                        <form>
-                            <input type="text" placeholder="キーワードを入力して探す">
-                            <button type="submit"><i class="fas fa-search"></i></button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="content-wrapper">
-                    <!-- タブ -->
-                    <div class="content-tabs">
-                        <a href="#" class="tab-item active">記事</a>
-                        <a href="#" class="tab-item">セット販売</a>
-                        <a href="#" class="tab-item">レビュー</a>
-                    </div>
-
-                    <!-- フィルター -->
-                    <div class="content-filters">
-                        <div class="filter-buttons">
-                            <a href="#" class="filter-btn active">全て</a>
-                            <a href="#" class="filter-btn">有料</a>
-                            <a href="#" class="filter-btn">無料</a>
+                <div class="main-content">
+                    <div class="tab-container">
+                        <div class="tabs">
+                            <button class="tab active">記事</button>
+                            <button class="tab">セット販売</button>
+                            <button class="tab">レビュー</button>
                         </div>
-                        <div class="sort-dropdown">
-                            <a href="#" class="sort-toggle">人気順 (1ヶ月)</a>
+
+                        <div class="filters">
+                            <div class="filter-group">
+                                <button class="filter-button active">全て</button>
+                                <button class="filter-button">有料</button>
+                                <button class="filter-button">無料</button>
+                            </div>
+                            <div class="sort-dropdown">
+                                <button class="sort-button">人気順 (1ヶ月) <i class="fas fa-chevron-down"></i></button>
+                                <div class="sort-menu">
+                                    <a href="#">新着順</a>
+                                    <a href="#">人気順 (1週間)</a>
+                                    <a href="#">人気順 (1ヶ月)</a>
+                                    <a href="#">人気順 (全期間)</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- 記事グリッド（初期状態では空、JSで動的に生成） -->
-                    <div class="article-grid" id="article-grid">
-                        <!-- ここに記事カードが動的に追加される -->
+                    <div class="create-article-banner" id="create-article-banner" style="display: none;">
+                        <a href="create-article.html" class="btn-primary"><i class="fas fa-pen"></i> 新しい記事を作成する</a>
+                    </div>
+
+                    <div class="article-grid">
+                        <!-- 記事カード1 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2024/10/19/e1hQomaywKHxZLHvnSJlki474ixp6e4c.png" alt="Threads完全攻略マニュアル">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">ビジネス</div>
+                                <h2 class="article-title">【革命】Threads完全攻略マニュアル</h2>
+                                <div class="article-rating">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-value">5</span>
+                                    <span class="rating-count">(142件)</span>
+                                </div>
+                                <div class="article-tags">
+                                    <span class="tag">#Twitter</span>
+                                    <span class="tag">#副業</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fas fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">1,146</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥4,980</div>
+                                        <div class="price-reward">1%獲得(49円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://static.tips.jp/2024/08/31/BtfPCKhyU5W6LA90HfVgadfFxFKBZqeR.png" alt="寝稼ぎさん">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">寝稼ぎさん</div>
+                                        <div class="article-date">2024/10/19 20:44</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="far fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード2 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2025/02/07/uhHNPJKKTN6du9Ni4OzXpUAqUiXkVdI7.png" alt="Thunder Fashion Book">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">美容・健康</div>
+                                <h2 class="article-title">【1300部突破】-Thunder Fashion Book- マネするだけでオシャレになれる禁断のファッションハック</h2>
+                                <div class="article-rating">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-value">5</span>
+                                    <span class="rating-count">(5件)</span>
+                                </div>
+                                <div class="article-tags">
+                                    <span class="tag">#ファッション</span>
+                                    <span class="tag">#オシャレ</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fas fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">2,813</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥6,480</div>
+                                        <div class="price-reward">1%獲得(64円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://static.tips.jp/2024/10/01/jLQc4p2KnXQue6pSav1obebOWjinlzqa.png" alt="T">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">T</div>
+                                        <div class="article-date">2024/10/01 19:45</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="far fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード3 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2025/02/05/fcWXuJM4rZMYtYgLTozPiLggdRBVMdrz.png" alt="法人口座開設">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">ビジネス</div>
+                                <h2 class="article-title">法人を作ったけど銀行口座が開設できない！　そんなあなたのための解決策（元銀行員監修）</h2>
+                                <div class="article-tags">
+                                    <span class="tag">#口座開設</span>
+                                    <span class="tag">#法人口座開設</span>
+                                    <span class="tag">#法人口座</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fas fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">0</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥2,880</div>
+                                        <div class="price-reward">1%獲得(28円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://via.placeholder.com/30x30?text=User" alt="どらねこ">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">どらねこ</div>
+                                        <div class="article-date">2025/02/06 00:31</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="far fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- ページネーション -->
                     <div class="pagination">
-                        <ul>
-                            <li class="disabled"><a href="#" aria-label="Previous"><span>&laquo;</span></a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">6</a></li>
-                            <li><a href="#">7</a></li>
-                            <li><a href="#">8</a></li>
-                            <li><a href="#">9</a></li>
-                            <li><a href="#">10</a></li>
-                            <li class="disabled"><a href="#">...</a></li>
-                            <li><a href="#">367</a></li>
-                            <li><a href="#">368</a></li>
-                            <li><a href="#" aria-label="Next"><span>&raquo;</span></a></li>
-                        </ul>
+                        <span class="page-item disabled"><i class="fas fa-chevron-left"></i></span>
+                        <span class="page-item active">1</span>
+                        <a href="#" class="page-item">2</a>
+                        <a href="#" class="page-item">3</a>
+                        <a href="#" class="page-item">4</a>
+                        <a href="#" class="page-item">5</a>
+                        <span class="page-item dots">...</span>
+                        <a href="#" class="page-item">371</a>
+                        <a href="#" class="page-item"><i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -139,10 +247,10 @@
     <footer>
         <div class="container">
             <div class="footer-links">
-                <a href="index.html">ホーム</a>
+                <a href="#">ホーム</a>
                 <a href="#">記事</a>
                 <a href="#">アフィリエイト</a>
-                <a href="#">ご利用ガイド（ヘルプ）</a>
+                <a href="#">ご利用ガイド</a>
                 <a href="#">プラス会員</a>
                 <a href="#">プライバシー</a>
                 <a href="#">ご利用規約</a>
@@ -151,19 +259,84 @@
                 <a href="#">お問い合わせ</a>
                 <a href="#">特商法表記</a>
             </div>
-            <div class="footer-social">
-                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-            </div>
             <div class="footer-logo">
-                <a href="index.html">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>Tips Clone</span>
-                </a>
+                <img src="https://via.placeholder.com/120x40?text=Tips+Clone" alt="Tips Clone">
             </div>
         </div>
     </footer>
 
-    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ログイン状態の確認（デモ用）
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const username = localStorage.getItem('username');
+            const authButtons = document.getElementById('auth-buttons');
+            const createArticleBanner = document.getElementById('create-article-banner');
+            
+            if (isLoggedIn && username) {
+                // ログイン済みの場合、ヘッダーを変更
+                authButtons.innerHTML = `
+                    <div class="user-dropdown">
+                        <span class="user-name">${username}</span>
+                        <button class="logout-btn" onclick="logout()">ログアウト</button>
+                    </div>
+                `;
+                
+                // 記事作成バナーを表示
+                if (createArticleBanner) {
+                    createArticleBanner.style.display = 'block';
+                }
+            }
+            
+            // お気に入りボタンの動作
+            const favoriteButtons = document.querySelectorAll('.favorite-button');
+            favoriteButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // ログインしていない場合はログインページへ
+                    if (!isLoggedIn) {
+                        window.location.href = 'login.html';
+                        return;
+                    }
+                    
+                    // お気に入り状態を切り替え
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        this.classList.add('active');
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        this.classList.remove('active');
+                    }
+                });
+            });
+            
+            // ソートドロップダウンの動作
+            const sortButton = document.querySelector('.sort-button');
+            const sortMenu = document.querySelector('.sort-menu');
+            
+            if (sortButton && sortMenu) {
+                sortButton.addEventListener('click', function() {
+                    sortMenu.classList.toggle('active');
+                });
+                
+                // クリック外で閉じる
+                document.addEventListener('click', function(e) {
+                    if (!sortButton.contains(e.target) && !sortMenu.contains(e.target)) {
+                        sortMenu.classList.remove('active');
+                    }
+                });
+            }
+        });
+        
+        // ログアウト処理
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            window.location.reload();
+        }
+    </script>
 </body>
 </html>
