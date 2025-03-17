@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tips Clone - オンライン記事販売サイト</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Tips Clone</span>
+                </a>
+                <div class="header-search">
+                    <form id="search-form">
+                        <input type="text" placeholder="キーワードを入力して探す" name="keyword">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="header-auth">
+                    <a href="#" class="login-btn">ログイン</a>
+                    <a href="#" class="register-btn">新規登録</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container main-container">
+            <!-- サイドバー -->
+            <aside class="sidebar">
+                <div class="sidebar-inner">
+                    <h2>カテゴリー</h2>
+                    <ul class="category-list">
+                        <li class="active"><a href="index.html">すべて</a></li>
+                        <li><a href="#">コラム</a></li>
+                        <li><a href="#">小説</a></li>
+                        <li><a href="#">エンタメ</a></li>
+                        <li><a href="#">音楽</a></li>
+                        <li><a href="#">アート</a></li>
+                        <li><a href="#">マンガ・アニメ</a></li>
+                        <li><a href="#">ゲーム</a></li>
+                        <li><a href="#">ホビー</a></li>
+                        <li><a href="#">サブカルチャー</a></li>
+                        <li><a href="#">ライフスタイル</a></li>
+                        <li><a href="#">グルメ</a></li>
+                        <li><a href="#">アウトドア</a></li>
+                        <li><a href="#">スポーツ</a></li>
+                        <li><a href="#">AIテクノロジー</a></li>
+                        <li><a href="#">その他テクノロジー</a></li>
+                        <li><a href="#">マネー</a></li>
+                        <li><a href="#">ビジネス</a></li>
+                        <li><a href="#">モノづくり</a></li>
+                        <li><a href="#">デザイン</a></li>
+                        <li><a href="#">結婚</a></li>
+                        <li><a href="#">恋愛</a></li>
+                        <li><a href="#">美容・健康</a></li>
+                        <li><a href="#">その他</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- メインコンテンツ -->
+            <div class="main-content">
+                <!-- パンくずリスト -->
+                <nav class="breadcrumb">
+                    <ol>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li>「すべて」の記事</li>
+                    </ol>
+                </nav>
+
+                <!-- ページタイトルと検索 -->
+                <div class="page-header">
+                    <h1>「すべて」の記事</h1>
+                    <div class="page-search">
+                        <form>
+                            <input type="text" placeholder="キーワードを入力して探す">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="content-wrapper">
+                    <!-- タブ -->
+                    <div class="content-tabs">
+                        <a href="#" class="tab-item active">記事</a>
+                        <a href="#" class="tab-item">セット販売</a>
+                        <a href="#" class="tab-item">レビュー</a>
+                    </div>
+
+                    <!-- フィルター -->
+                    <div class="content-filters">
+                        <div class="filter-buttons">
+                            <a href="#" class="filter-btn active">全て</a>
+                            <a href="#" class="filter-btn">有料</a>
+                            <a href="#" class="filter-btn">無料</a>
+                        </div>
+                        <div class="sort-dropdown">
+                            <a href="#" class="sort-toggle">人気順 (1ヶ月)</a>
+                        </div>
+                    </div>
+
+                    <!-- 記事グリッド（初期状態では空、JSで動的に生成） -->
+                    <div class="article-grid" id="article-grid">
+                        <!-- ここに記事カードが動的に追加される -->
+                    </div>
+
+                    <!-- ページネーション -->
+                    <div class="pagination">
+                        <ul>
+                            <li class="disabled"><a href="#" aria-label="Previous"><span>&laquo;</span></a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li><a href="#">7</a></li>
+                            <li><a href="#">8</a></li>
+                            <li><a href="#">9</a></li>
+                            <li><a href="#">10</a></li>
+                            <li class="disabled"><a href="#">...</a></li>
+                            <li><a href="#">367</a></li>
+                            <li><a href="#">368</a></li>
+                            <li><a href="#" aria-label="Next"><span>&raquo;</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">ホーム</a>
+                <a href="#">記事</a>
+                <a href="#">アフィリエイト</a>
+                <a href="#">ご利用ガイド（ヘルプ）</a>
+                <a href="#">プラス会員</a>
+                <a href="#">プライバシー</a>
+                <a href="#">ご利用規約</a>
+                <a href="#">運営会社</a>
+                <a href="#">お知らせ</a>
+                <a href="#">お問い合わせ</a>
+                <a href="#">特商法表記</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <div class="footer-logo">
+                <a href="index.html">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Tips Clone</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
