@@ -105,3 +105,75 @@ const TipsApp = {
 document.addEventListener('DOMContentLoaded', () => {
   TipsApp.init();
 });
+// js/common.js に追加
+// UI機能拡張
+ui: {
+  // 既存のコード...
+
+  // タブ機能
+  initTabs() {
+    const tabs = document.querySelectorAll('.tab');
+    if (tabs.length) {
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // 現在のアクティブタブを非アクティブに
+          document.querySelector('.tab.active').classList.remove('active');
+          // クリックされたタブをアクティブに
+          this.classList.add('active');
+          
+          // ここにコンテンツ切り替えのロジックを追加
+        });
+      });
+    }
+  },
+  
+  // ソートドロップダウン
+  initSortDropdown() {
+    const sortButton = document.querySelector('.sort-button');
+    const sortMenu = document.querySelector('.sort-menu');
+    
+    if (sortButton && sortMenu) {
+      sortButton.addEventListener('click', () => {
+        sortMenu.classList.toggle('active');
+      });
+      
+      // クリック外で閉じる
+      document.addEventListener('click', (e) => {
+        if (!sortButton.contains(e.target) && !sortMenu.contains(e.target)) {
+          sortMenu.classList.remove('active');
+        }
+      });
+    }
+  },
+  
+  // フィルターボタン
+  initFilterButtons() {
+    const filterButtons = document.querySelectorAll('.filter-button');
+    if (filterButtons.length) {
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // 現在のアクティブフィルターを非アクティブに
+          document.querySelector('.filter-button.active').classList.remove('active');
+          // クリックされたフィルターをアクティブに
+          this.classList.add('active');
+          
+          // ここにフィルタリングロジックを追加
+        });
+      });
+    }
+  }
+},
+
+// init関数を更新
+init() {
+  // 共通初期化処理
+  this.ui.updateAuthUI();
+  
+  // ページ固有の初期化処理
+  if (document.querySelector('.article-grid')) {
+    this.ui.initFavoriteButtons();
+    this.ui.initSortDropdown();
+    this.ui.initFilterButtons();
+    this.ui.initTabs();
+  }
+}
