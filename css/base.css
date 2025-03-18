@@ -1,3 +1,23 @@
+/* kyouyouのブランドカラー */
+:root {
+  --primary-color: #4A6FDC;
+  --primary-light: #7591E5;
+  --primary-dark: #3258C5;
+  --secondary-color: #50C878;
+  --text-color: #333333;
+  --text-light: #666666;
+  --background-color: #FFFFFF;
+  --background-alt: #F7F9FC;
+  --border-color: #E0E0E0;
+  --success-color: #4CAF50;
+  --warning-color: #FF9800;
+  --error-color: #F44336;
+  --gray-100: #F5F5F5;
+  --gray-200: #EEEEEE;
+  --gray-300: #E0E0E0;
+  --gray-400: #BDBDBD;
+  --gray-500: #9E9E9E;
+}
 /* base.css - 基本スタイル */
 * {
   box-sizing: border-box;
