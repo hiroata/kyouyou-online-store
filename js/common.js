@@ -1,159 +1,135 @@
 // common.js
-const TipsApp = {
-  // 認証関連
-  auth: {
-    // ログイン状態の確認
-    isLoggedIn() {
-      return localStorage.getItem('isLoggedIn') === 'true';
-    },
+document.addEventListener('DOMContentLoaded', function() {
+    // ヘッダーとフッターの読み込み
+    loadComponent('header-placeholder', 'components/header.html');
+    loadComponent('footer-placeholder', 'components/footer.html');
     
-    // 現在のユーザー名を取得
-    getUsername() {
-      return localStorage.getItem('username');
-    },
+    // ログインモーダル
+    const modal = document.getElementById("loginModal");
+    const loginBtn = document.getElementById("loginBtn");
+    const closeBtn = document.querySelector(".close");
     
-    // ログイン処理
-    login(username, rememberMe = false) {
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('username', username);
-    },
-    
-    // ログアウト処理
-    logout() {
-      localStorage.removeItem('isLoggedIn');
-      localStorage.removeItem('username');
-      window.location.href = 'index.html';
+    if (loginBtn) {
+        loginBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            modal.style.display = "block";
+        });
     }
-  },
-  
-  // UI関連
-  ui: {
-    // ヘッダーのログイン状態を更新
-    updateAuthUI() {
-      const authButtons = document.getElementById('auth-buttons');
-      const createArticleBanner = document.getElementById('create-article-banner');
-      
-      if (authButtons) {
-        if (TipsApp.auth.isLoggedIn()) {
-          const username = TipsApp.auth.getUsername();
-          authButtons.innerHTML = `
-            <div class="user-dropdown">
-              <span class="user-name">${username}</span>
-              <button class="logout-btn" onclick="TipsApp.auth.logout()">ログアウト</button>
-            </div>
-          `;
-          
-          // 記事作成バナーを表示
-          if (createArticleBanner) {
-            createArticleBanner.style.display = 'block';
-          }
-        } else {
-          authButtons.innerHTML = `
-            <a href="login.html" class="btn-login">ログイン</a>
-            <a href="register.html" class="btn-register">新規登録</a>
-          `;
-          
-          // 記事作成バナーを非表示
-          if (createArticleBanner) {
-            createArticleBanner.style.display = 'none';
-          }
+    
+    if (closeBtn) {
+        closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+    }
+    
+    window.addEventListener("click", function(e) {
+        if (e.target === modal) {
+            modal.style.display = "none";
         }
-      }
-    },
+    });
     
-    // お気に入りボタンの初期化
-    initFavoriteButtons() {
-      const favoriteButtons = document.querySelectorAll('.favorite-button');
-      favoriteButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          // ログインしていない場合はログインページへ
-          if (!TipsApp.auth.isLoggedIn()) {
-            window.location.href = 'login.html';
-            return;
-          }
-          
-          // お気に入り状態を切り替え
-          const icon = this.querySelector('i');
-          if (icon.classList.contains('fa-regular')) {
-            icon.classList.remove('fa-regular');
-            icon.classList.add('fa-solid');
-            this.classList.add('active');
-          } else {
-            icon.classList.remove('fa-solid');
-            icon.classList.add('fa-regular');
-            this.classList.remove('active');
-          }
+    // ログインフォーム送信処理
+    const loginForm = document.querySelector('.login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 実際の認証処理はここに実装します
+            // デモ用の簡易ログイン処理
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (email && password) {
+                // ローカルストレージにログイン状態を保存（実際はトークンなどを使用）
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                // UI更新
+                updateLoginState();
+                
+                // モーダルを閉じる
+                modal.style.display = "none";
+            }
         });
-      });
-    },
+    }
     
-    // タブ機能
-    initTabs() {
-      const tabs = document.querySelectorAll('.tab');
-      if (tabs.length) {
-        tabs.forEach(tab => {
-          tab.addEventListener('click', function() {
-            // 現在のアクティブタブを非アクティブに
-            document.querySelector('.tab.active').classList.remove('active');
-            // クリックされたタブをアクティブに
-            this.classList.add('active');
-          });
-        });
-      }
-    },
+    // ログイン状態によるUI更新
+    updateLoginState();
     
-    // ソートドロップダウン
-    initSortDropdown() {
-      const sortButton = document.querySelector('.sort-button');
-      const sortMenu = document.querySelector('.sort-menu');
-      
-      if (sortButton && sortMenu) {
-        sortButton.addEventListener('click', () => {
-          sortMenu.classList.toggle('active');
+    // フィルターボタンのドロップダウン処理
+    const filterBtn = document.querySelector('.filter-btn');
+    const filterDropdown = document.querySelector('.filter-dropdown');
+    
+    if (filterBtn && filterDropdown) {
+        filterBtn.addEventListener('click', function() {
+            filterDropdown.classList.toggle('show');
         });
         
-        // クリック外で閉じる
-        document.addEventListener('click', (e) => {
-          if (!sortButton.contains(e.target) && !sortMenu.contains(e.target)) {
-            sortMenu.classList.remove('active');
-          }
+        // ドロップダウン外クリックで閉じる
+        window.addEventListener('click', function(e) {
+            if (!e.target.matches('.filter-btn') && !e.target.closest('.filter-dropdown')) {
+                if (filterDropdown.classList.contains('show')) {
+                    filterDropdown.classList.remove('show');
+                }
+            }
         });
-      }
-    },
+    }
     
-    // フィルターボタン
-    initFilterButtons() {
-      const filterButtons = document.querySelectorAll('.filter-button');
-      if (filterButtons.length) {
-        filterButtons.forEach(button => {
-          button.addEventListener('click', function() {
-            // 現在のアクティブフィルターを非アクティブに
-            document.querySelector('.filter-button.active').classList.remove('active');
-            // クリックされたフィルターをアクティブに
-            this.classList.add('active');
-          });
+    // お気に入りボタンの処理
+    const favBtns = document.querySelectorAll('.favorite-btn');
+    favBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const icon = this.querySelector('i');
+            icon.classList.toggle('far');
+            icon.classList.toggle('fas');
         });
-      }
-    }
-  },
-  
-  // ページの初期化
-  init() {
-    // 共通初期化処理
-    this.ui.updateAuthUI();
-    
-    // ページ固有の初期化処理
-    if (document.querySelector('.article-grid')) {
-      this.ui.initFavoriteButtons();
-      this.ui.initSortDropdown();
-      this.ui.initFilterButtons();
-      this.ui.initTabs();
-    }
-  }
-};
-
-// DOMの読み込み完了時に初期化
-document.addEventListener('DOMContentLoaded', () => {
-  TipsApp.init();
+    });
 });
+
+// コンポーネント読み込み関数
+function loadComponent(targetId, url) {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            target.innerHTML = data;
+            
+            // ヘッダーが読み込まれた後にログインボタンのイベントを再設定
+            if (targetId === 'header-placeholder') {
+                const loginBtn = document.getElementById("loginBtn");
+                const userProfile = document.getElementById("userProfile");
+                
+                if (loginBtn) {
+                    loginBtn.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        const modal = document.getElementById("loginModal");
+                        modal.style.display = "block";
+                    });
+                }
+                
+                // ログイン状態の更新
+                updateLoginState();
+            }
+        })
+        .catch(error => {
+            console.error(`コンポーネントの読み込みに失敗しました: ${url}`, error);
+        });
+}
+
+// ログイン状態によるUI更新
+function updateLoginState() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const loginBtn = document.getElementById("loginBtn");
+    const userProfile = document.getElementById("userProfile");
+    
+    if (loginBtn && userProfile) {
+        if (isLoggedIn) {
+            loginBtn.style.display = "none";
+            userProfile.style.display = "block";
+        } else {
+            loginBtn.style.display = "block";
+            userProfile.style.display = "none";
+        }
+    }
+}
