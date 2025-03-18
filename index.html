@@ -13,7 +13,36 @@
 <body>
     <div class="page-container">
         <!-- ヘッダー -->
-        <div id="header-placeholder"></div>
+        <header class="site-header">
+          <div class="header-container">
+            <div class="logo">
+              <a href="index.html">
+                <h1>kyouyou</h1>
+              </a>
+            </div>
+            <nav class="main-nav">
+              <ul>
+                <li><a href="#">カテゴリー</a></li>
+                <li><a href="#">ランキング</a></li>
+                <li><a href="#">新着</a></li>
+                <li><a href="#">セール</a></li>
+              </ul>
+            </nav>
+            <div class="header-actions">
+              <div class="search-box">
+                <input type="text" placeholder="キーワードで検索">
+                <button type="submit"><i class="fas fa-search"></i></button>
+              </div>
+              <div class="user-actions">
+                <a href="#" class="login-btn" id="loginBtn">ログイン</a>
+                <a href="#" class="signup-btn">新規登録</a>
+                <a href="#" class="user-profile" id="userProfile" style="display: none;">
+                  <img src="img/profile-placeholder.jpg" alt="プロフィール">
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
 
         <!-- メインコンテンツ -->
         <main>
@@ -122,16 +151,134 @@
                 
                 <!-- 記事グリッド -->
                 <div class="article-grid tab-content active" id="popular">
-                    <!-- 記事カード群はそのまま残す -->
+                    <!-- 記事カード1 -->
+                    <div class="article-card">
+                        <div class="article-image">
+                            <img src="img/article1.jpg" alt="記事1">
+                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-category">プログラミング</div>
+                            <h3 class="article-title">初心者でもわかるReactの基礎から応用まで</h3>
+                            <div class="article-author">
+                                <img src="img/author1.jpg" alt="著者1">
+                                <span>田中太郎</span>
+                            </div>
+                            <div class="article-meta">
+                                <span class="article-rating"><i class="fas fa-star"></i> 4.8</span>
+                                <span class="article-price">¥1,200</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 記事カード2 -->
+                    <div class="article-card">
+                        <div class="article-image">
+                            <img src="img/article2.jpg" alt="記事2">
+                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-category">デザイン</div>
+                            <h3 class="article-title">UIデザインの原則：ユーザー体験を向上させる10のポイント</h3>
+                            <div class="article-author">
+                                <img src="img/author2.jpg" alt="著者2">
+                                <span>佐藤花子</span>
+                            </div>
+                            <div class="article-meta">
+                                <span class="article-rating"><i class="fas fa-star"></i> 4.6</span>
+                                <span class="article-price">¥980</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 記事カード3 -->
+                    <div class="article-card">
+                        <div class="article-image">
+                            <img src="img/article3.jpg" alt="記事3">
+                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-category">ビジネス</div>
+                            <h3 class="article-title">スタートアップの資金調達：初めての投資家向けピッチの作り方</h3>
+                            <div class="article-author">
+                                <img src="img/author3.jpg" alt="著者3">
+                                <span>鈴木一郎</span>
+                            </div>
+                            <div class="article-meta">
+                                <span class="article-rating"><i class="fas fa-star"></i> 4.9</span>
+                                <span class="article-price">¥1,500</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 記事カード4 -->
+                    <div class="article-card">
+                        <div class="article-image">
+                            <img src="img/article4.jpg" alt="記事4">
+                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-category">教育</div>
+                            <h3 class="article-title">効率的な学習法：短時間で最大の成果を出す方法</h3>
+                            <div class="article-author">
+                                <img src="img/author4.jpg" alt="著者4">
+                                <span>山田次郎</span>
+                            </div>
+                            <div class="article-meta">
+                                <span class="article-rating"><i class="fas fa-star"></i> 4.7</span>
+                                <span class="article-price">¥800</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 記事カード5 -->
+                    <div class="article-card">
+                        <div class="article-image">
+                            <img src="img/article5.jpg" alt="記事5">
+                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-category">料理</div>
+                            <h3 class="article-title">プロ直伝の家庭料理テクニック：基本の調味料で劇的に味が変わる</h3>
+                            <div class="article-author">
+                                <img src="img/author5.jpg" alt="著者5">
+                                <span>高橋シェフ</span>
+                            </div>
+                            <div class="article-meta">
+                                <span class="article-rating"><i class="fas fa-star"></i> 4.9</span>
+                                <span class="article-price">¥1,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 記事カード6 -->
+                    <div class="article-card">
+                        <div class="article-image">
+                            <img src="img/article6.jpg" alt="記事6">
+                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-category">音楽</div>
+                            <h3 class="article-title">ギター初心者が3ヶ月で弾けるようになるためのステップバイステップガイド</h3>
+                            <div class="article-author">
+                                <img src="img/author6.jpg" alt="著者6">
+                                <span>伊藤ミュージシャン</span>
+                            </div>
+                            <div class="article-meta">
+                                <span class="article-rating"><i class="fas fa-star"></i> 4.5</span>
+                                <span class="article-price">¥1,300</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="tab-content" id="new">
-                    <!-- 新着タブのコンテンツ -->
+                    <!-- 新着タブのコンテンツ（同様の記事カード） -->
                     <p class="placeholder-text">新着コンテンツがここに表示されます</p>
                 </div>
                 
                 <div class="tab-content" id="free">
-                    <!-- 無料タブのコンテンツ -->
+                    <!-- 無料タブのコンテンツ（同様の記事カード） -->
                     <p class="placeholder-text">無料コンテンツがここに表示されます</p>
                 </div>
                 
@@ -165,7 +312,61 @@
         </main>
         
         <!-- フッター -->
-        <div id="footer-placeholder"></div>
+        <footer class="site-footer">
+          <div class="footer-container">
+            <div class="footer-logo">
+              <h2>kyouyou</h2>
+              <p>知識の共有と販売のプラットフォーム</p>
+            </div>
+            <div class="footer-links">
+              <div class="footer-section">
+                <h3>コンテンツ</h3>
+                <ul>
+                  <li><a href="#">カテゴリー一覧</a></li>
+                  <li><a href="#">ランキング</a></li>
+                  <li><a href="#">新着記事</a></li>
+                  <li><a href="#">特集</a></li>
+                </ul>
+              </div>
+              <div class="footer-section">
+                <h3>執筆者向け</h3>
+                <ul>
+                  <li><a href="#">執筆を始める</a></li>
+                  <li><a href="#">ガイドライン</a></li>
+                  <li><a href="#">報酬について</a></li>
+                  <li><a href="#">よくある質問</a></li>
+                </ul>
+              </div>
+              <div class="footer-section">
+                <h3>サポート</h3>
+                <ul>
+                  <li><a href="#">ヘルプセンター</a></li>
+                  <li><a href="#">お問い合わせ</a></li>
+                  <li><a href="#">利用規約</a></li>
+                  <li><a href="#">プライバシーポリシー</a></li>
+                </ul>
+              </div>
+              <div class="footer-section">
+                <h3>kyouyouについて</h3>
+                <ul>
+                  <li><a href="#">会社情報</a></li>
+                  <li><a href="#">ブログ</a></li>
+                  <li><a href="#">採用情報</a></li>
+                  <li><a href="#">パートナー</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 kyouyou All Rights Reserved.</p>
+          </div>
+        </footer>
     </div>
     
     <!-- ログインモーダル -->
