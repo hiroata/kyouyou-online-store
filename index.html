@@ -3,404 +3,586 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kyouyou - 知識の共有と販売のプラットフォーム</title>
-    <meta name="description" content="kyouyouは、あなたの知識や経験を共有し、価値を生み出すプラットフォームです。">
+    <title>Tips Clone - 知識と経験を共有するプラットフォーム</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- CSS ファイル -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/pages/home.css">
 </head>
 <body>
-    <div class="page-container">
-        <!-- ヘッダー -->
-        <header class="site-header">
-          <div class="header-container">
+    <header>
+        <div class="container">
             <div class="logo">
-              <a href="index.html">
-                <h1>kyouyou</h1>
-              </a>
-            </div>
-            <nav class="main-nav">
-              <ul>
-                <li><a href="#">カテゴリー</a></li>
-                <li><a href="#">ランキング</a></li>
-                <li><a href="#">新着</a></li>
-                <li><a href="#">セール</a></li>
-              </ul>
-            </nav>
-            <div class="header-actions">
-              <div class="search-box">
-                <input type="text" placeholder="キーワードで検索">
-                <button type="submit"><i class="fas fa-search"></i></button>
-              </div>
-              <div class="user-actions">
-                <a href="#" class="login-btn" id="loginBtn">ログイン</a>
-                <a href="#" class="signup-btn">新規登録</a>
-                <a href="#" class="user-profile" id="userProfile" style="display: none;">
-                  <img src="img/profile-placeholder.jpg" alt="プロフィール">
+                <a href="index.html">
+                    <img src="https://via.placeholder.com/150x50?text=Tips+Clone" alt="Tips Clone">
                 </a>
-              </div>
             </div>
-          </div>
-        </header>
-
-        <!-- メインコンテンツ -->
-        <main>
-            <!-- ヒーローセクション -->
-            <section class="hero-section">
-                <div class="hero-content">
-                    <h1>あなたの教養が、誰かの糧になる</h1>
-                    <p>kyouyouは、専門知識や経験を共有し、その価値を認め合うプラットフォームです。</p>
-                    <div class="hero-buttons">
-                        <a href="#" class="btn btn-primary">記事を探す</a>
-                        <a href="#" class="btn btn-secondary">執筆を始める</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="img/hero-image.jpg" alt="kyouyou イメージ">
-                </div>
-            </section>
-
-            <!-- カテゴリーナビゲーション -->
-            <section class="category-nav">
-                <h2>カテゴリーから探す</h2>
-                <div class="category-list">
-                    <a href="#" class="category-item">
-                        <i class="fas fa-laptop-code"></i>
-                        <span>プログラミング</span>
-                    </a>
-                    <a href="#" class="category-item">
-                        <i class="fas fa-palette"></i>
-                        <span>デザイン</span>
-                    </a>
-                    <a href="#" class="category-item">
-                        <i class="fas fa-chart-line"></i>
-                        <span>ビジネス</span>
-                    </a>
-                    <a href="#" class="category-item">
-                        <i class="fas fa-book"></i>
-                        <span>教育</span>
-                    </a>
-                    <a href="#" class="category-item">
-                        <i class="fas fa-guitar"></i>
-                        <span>音楽</span>
-                    </a>
-                    <a href="#" class="category-item">
-                        <i class="fas fa-camera"></i>
-                        <span>写真・映像</span>
-                    </a>
-                    <a href="#" class="category-item">
-                        <i class="fas fa-utensils"></i>
-                        <span>料理</span>
-                    </a>
-                    <a href="#" class="category-item more">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <span>もっと見る</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- タブセクション -->
-            <section class="tab-section">
-                <div class="tab-container">
-                    <div class="tabs">
-                        <button class="tab-btn active" data-tab="popular">人気</button>
-                        <button class="tab-btn" data-tab="new">新着</button>
-                        <button class="tab-btn" data-tab="free">無料</button>
-                    </div>
-                    <div class="filter-sort">
-                        <div class="filter">
-                            <button class="filter-btn">
-                                <i class="fas fa-filter"></i> フィルター
-                            </button>
-                            <div class="filter-dropdown">
-                                <div class="filter-group">
-                                    <h3>カテゴリー</h3>
-                                    <div class="filter-options">
-                                        <label><input type="checkbox"> プログラミング</label>
-                                        <label><input type="checkbox"> デザイン</label>
-                                        <label><input type="checkbox"> ビジネス</label>
-                                        <label><input type="checkbox"> 教育</label>
-                                    </div>
-                                </div>
-                                <div class="filter-group">
-                                    <h3>価格</h3>
-                                    <div class="filter-options">
-                                        <label><input type="checkbox"> 無料</label>
-                                        <label><input type="checkbox"> 〜500円</label>
-                                        <label><input type="checkbox"> 500円〜1000円</label>
-                                        <label><input type="checkbox"> 1000円以上</label>
-                                    </div>
-                                </div>
-                                <div class="filter-actions">
-                                    <button class="btn btn-secondary">リセット</button>
-                                    <button class="btn btn-primary">適用</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sort">
-                            <select>
-                                <option>人気順</option>
-                                <option>新着順</option>
-                                <option>価格の安い順</option>
-                                <option>価格の高い順</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 記事グリッド -->
-                <div class="article-grid tab-content active" id="popular">
-                    <!-- 記事カード1 -->
-                    <div class="article-card">
-                        <div class="article-image">
-                            <img src="img/article1.jpg" alt="記事1">
-                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
-                        </div>
-                        <div class="article-content">
-                            <div class="article-category">プログラミング</div>
-                            <h3 class="article-title">初心者でもわかるReactの基礎から応用まで</h3>
-                            <div class="article-author">
-                                <img src="img/author1.jpg" alt="著者1">
-                                <span>田中太郎</span>
-                            </div>
-                            <div class="article-meta">
-                                <span class="article-rating"><i class="fas fa-star"></i> 4.8</span>
-                                <span class="article-price">¥1,200</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 記事カード2 -->
-                    <div class="article-card">
-                        <div class="article-image">
-                            <img src="img/article2.jpg" alt="記事2">
-                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
-                        </div>
-                        <div class="article-content">
-                            <div class="article-category">デザイン</div>
-                            <h3 class="article-title">UIデザインの原則：ユーザー体験を向上させる10のポイント</h3>
-                            <div class="article-author">
-                                <img src="img/author2.jpg" alt="著者2">
-                                <span>佐藤花子</span>
-                            </div>
-                            <div class="article-meta">
-                                <span class="article-rating"><i class="fas fa-star"></i> 4.6</span>
-                                <span class="article-price">¥980</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 記事カード3 -->
-                    <div class="article-card">
-                        <div class="article-image">
-                            <img src="img/article3.jpg" alt="記事3">
-                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
-                        </div>
-                        <div class="article-content">
-                            <div class="article-category">ビジネス</div>
-                            <h3 class="article-title">スタートアップの資金調達：初めての投資家向けピッチの作り方</h3>
-                            <div class="article-author">
-                                <img src="img/author3.jpg" alt="著者3">
-                                <span>鈴木一郎</span>
-                            </div>
-                            <div class="article-meta">
-                                <span class="article-rating"><i class="fas fa-star"></i> 4.9</span>
-                                <span class="article-price">¥1,500</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 記事カード4 -->
-                    <div class="article-card">
-                        <div class="article-image">
-                            <img src="img/article4.jpg" alt="記事4">
-                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
-                        </div>
-                        <div class="article-content">
-                            <div class="article-category">教育</div>
-                            <h3 class="article-title">効率的な学習法：短時間で最大の成果を出す方法</h3>
-                            <div class="article-author">
-                                <img src="img/author4.jpg" alt="著者4">
-                                <span>山田次郎</span>
-                            </div>
-                            <div class="article-meta">
-                                <span class="article-rating"><i class="fas fa-star"></i> 4.7</span>
-                                <span class="article-price">¥800</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 記事カード5 -->
-                    <div class="article-card">
-                        <div class="article-image">
-                            <img src="img/article5.jpg" alt="記事5">
-                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
-                        </div>
-                        <div class="article-content">
-                            <div class="article-category">料理</div>
-                            <h3 class="article-title">プロ直伝の家庭料理テクニック：基本の調味料で劇的に味が変わる</h3>
-                            <div class="article-author">
-                                <img src="img/author5.jpg" alt="著者5">
-                                <span>高橋シェフ</span>
-                            </div>
-                            <div class="article-meta">
-                                <span class="article-rating"><i class="fas fa-star"></i> 4.9</span>
-                                <span class="article-price">¥1,000</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 記事カード6 -->
-                    <div class="article-card">
-                        <div class="article-image">
-                            <img src="img/article6.jpg" alt="記事6">
-                            <button class="favorite-btn"><i class="far fa-heart"></i></button>
-                        </div>
-                        <div class="article-content">
-                            <div class="article-category">音楽</div>
-                            <h3 class="article-title">ギター初心者が3ヶ月で弾けるようになるためのステップバイステップガイド</h3>
-                            <div class="article-author">
-                                <img src="img/author6.jpg" alt="著者6">
-                                <span>伊藤ミュージシャン</span>
-                            </div>
-                            <div class="article-meta">
-                                <span class="article-rating"><i class="fas fa-star"></i> 4.5</span>
-                                <span class="article-price">¥1,300</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tab-content" id="new">
-                    <!-- 新着タブのコンテンツ（同様の記事カード） -->
-                    <p class="placeholder-text">新着コンテンツがここに表示されます</p>
-                </div>
-                
-                <div class="tab-content" id="free">
-                    <!-- 無料タブのコンテンツ（同様の記事カード） -->
-                    <p class="placeholder-text">無料コンテンツがここに表示されます</p>
-                </div>
-                
-                <div class="load-more">
-                    <button class="btn btn-secondary">もっと見る</button>
-                </div>
-            </section>
-            
-            <!-- 特集セクション -->
-            <section class="featured-section">
-                <h2>注目の特集</h2>
-                <div class="featured-container">
-                    <div class="featured-card">
-                        <img src="img/featured1.jpg" alt="特集1">
-                        <div class="featured-content">
-                            <h3>今月のおすすめ：教養を高める10の習慣</h3>
-                            <p>毎日の小さな積み重ねが、あなたの教養を大きく変えます。実践しやすい10の習慣をご紹介。</p>
-                            <a href="#" class="btn btn-primary">詳細を見る</a>
-                        </div>
-                    </div>
-                    <div class="featured-card">
-                        <img src="img/featured2.jpg" alt="特集2">
-                        <div class="featured-content">
-                            <h3>執筆者インタビュー：知識の共有が生み出す価値</h3>
-                            <p>kyouyouで人気の執筆者に、知識共有の意義とテクニックについて伺いました。</p>
-                            <a href="#" class="btn btn-primary">詳細を見る</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-        <!-- フッター -->
-        <footer class="site-footer">
-          <div class="footer-container">
-            <div class="footer-logo">
-              <h2>kyouyou</h2>
-              <p>知識の共有と販売のプラットフォーム</p>
+            <div class="search-bar">
+                <input type="text" placeholder="キーワードを入力して検索">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
-            <div class="footer-links">
-              <div class="footer-section">
-                <h3>コンテンツ</h3>
-                <ul>
-                  <li><a href="#">カテゴリー一覧</a></li>
-                  <li><a href="#">ランキング</a></li>
-                  <li><a href="#">新着記事</a></li>
-                  <li><a href="#">特集</a></li>
-                </ul>
-              </div>
-              <div class="footer-section">
-                <h3>執筆者向け</h3>
-                <ul>
-                  <li><a href="#">執筆を始める</a></li>
-                  <li><a href="#">ガイドライン</a></li>
-                  <li><a href="#">報酬について</a></li>
-                  <li><a href="#">よくある質問</a></li>
-                </ul>
-              </div>
-              <div class="footer-section">
-                <h3>サポート</h3>
-                <ul>
-                  <li><a href="#">ヘルプセンター</a></li>
-                  <li><a href="#">お問い合わせ</a></li>
-                  <li><a href="#">利用規約</a></li>
-                  <li><a href="#">プライバシーポリシー</a></li>
-                </ul>
-              </div>
-              <div class="footer-section">
-                <h3>kyouyouについて</h3>
-                <ul>
-                  <li><a href="#">会社情報</a></li>
-                  <li><a href="#">ブログ</a></li>
-                  <li><a href="#">採用情報</a></li>
-                  <li><a href="#">パートナー</a></li>
-                </ul>
-              </div>
+            <div class="auth-buttons" id="auth-buttons">
+                <a href="login.html" class="btn-login">ログイン</a>
+                <a href="register.html" class="btn-register">新規登録</a>
             </div>
-          </div>
-          <div class="footer-bottom">
-            <div class="social-links">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-            <p class="copyright">&copy; 2025 kyouyou All Rights Reserved.</p>
-          </div>
-        </footer>
-    </div>
-    
-    <!-- ログインモーダル -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>kyouyouにログイン</h2>
-            <form class="login-form">
-                <div class="form-group">
-                    <label for="email">メールアドレス</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">パスワード</label>
-                    <input type="password" id="password" required>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">ログイン</button>
-                </div>
-                <div class="form-links">
-                    <a href="#">パスワードをお忘れですか？</a>
-                    <a href="#">アカウント登録はこちら</a>
-                </div>
-                <div class="social-login">
-                    <p>または</p>
-                    <button type="button" class="btn btn-twitter">
-                        <i class="fab fa-twitter"></i> Twitterでログイン
-                    </button>
-                </div>
-            </form>
         </div>
-    </div>
-    
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">ホーム</a> > 「すべて」の記事
+            </div>
+            <div class="page-title">
+                <h1>「すべて」の記事</h1>
+            </div>
+            <div class="content-layout">
+                <div class="sidebar">
+                    <div class="sidebar-box">
+                        <h2>カテゴリー</h2>
+                        <ul class="category-list">
+                            <li class="active"><a href="#">すべて</a></li>
+                            <li><a href="#">コラム</a></li>
+                            <li><a href="#">小説</a></li>
+                            <li><a href="#">エンタメ</a></li>
+                            <li><a href="#">音楽</a></li>
+                            <li><a href="#">アート</a></li>
+                            <li><a href="#">マンガ・アニメ</a></li>
+                            <li><a href="#">ゲーム</a></li>
+                            <li><a href="#">ホビー</a></li>
+                            <li><a href="#">サブカルチャー</a></li>
+                            <li><a href="#">ライフスタイル</a></li>
+                            <li><a href="#">グルメ</a></li>
+                            <li><a href="#">アウトドア</a></li>
+                            <li><a href="#">スポーツ</a></li>
+                            <li><a href="#">AIテクノロジー</a></li>
+                            <li><a href="#">その他テクノロジー</a></li>
+                            <li><a href="#">マネー</a></li>
+                            <li><a href="#">ビジネス</a></li>
+                            <li><a href="#">モノづくり</a></li>
+                            <li><a href="#">デザイン</a></li>
+                            <li><a href="#">結婚</a></li>
+                            <li><a href="#">恋愛</a></li>
+                            <li><a href="#">美容・健康</a></li>
+                            <li><a href="#">その他</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="main-content">
+                    <div class="tab-container">
+                        <div class="tabs">
+                            <button class="tab active">記事</button>
+                            <button class="tab">セット販売</button>
+                            <button class="tab">レビュー</button>
+                        </div>
+                        <div class="filters">
+                            <div class="filter-group">
+                                <button class="filter-button active">全て</button>
+                                <button class="filter-button">有料</button>
+                                <button class="filter-button">無料</button>
+                            </div>
+                            <div class="sort-dropdown">
+                                <button class="sort-button">人気順 (1ヶ月) <i class="fa-solid fa-chevron-down"></i></button>
+                                <div class="sort-menu">
+                                    <a href="#">新着順</a>
+                                    <a href="#">人気順 (1週間)</a>
+                                    <a href="#">人気順 (1ヶ月)</a>
+                                    <a href="#">人気順 (全期間)</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="create-article-banner" id="create-article-banner" style="display: none;">
+                        <a href="create-article.html" class="btn-primary"><i class="fa-solid fa-pen"></i> 新しい記事を作成する</a>
+                    </div>
+
+                    <div class="article-grid">
+                        <!-- 記事カード1 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2024/10/19/e1hQomaywKHxZLHvnSJlki474ixp6e4c.png" alt="Threads完全攻略マニュアル">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">ビジネス</div>
+                                <h2 class="article-title">〖革命〗Threads完全攻略マニュアル</h2>
+                                <div class="article-rating">
+                                    <div class="star-rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="rating-value">5</span>
+                                    <span class="rating-count">(142件)</span>
+                                </div>
+                                <div class="article-tags">
+                                    <span class="tag">#Twitter</span>
+                                    <span class="tag">#副業</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fa-solid fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">1,146</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥4,980</div>
+                                        <div class="price-reward">1%獲得(49円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://static.tips.jp/2024/08/31/BtfPCKhyU5W6LA90HfVgadfFxFKBZqeR.png" alt="寝稼ぎさん">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">寝稼ぎさん</div>
+                                        <div class="article-date">2024/10/19 20:44</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="fa-regular fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード2 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2025/02/07/uhHNPJKKTN6du9Ni4OzXpUAqUiXkVdI7.png" alt="Thunder Fashion Book">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">美容・健康</div>
+                                <h2 class="article-title">〖1300部突破〗-Thunder Fashion Book- マネするだけでオシャレになれる禁断のファッションハック</h2>
+                                <div class="article-rating">
+                                    <div class="star-rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="rating-value">5</span>
+                                    <span class="rating-count">(5件)</span>
+                                </div>
+                                <div class="article-tags">
+                                    <span class="tag">#ファッション</span>
+                                    <span class="tag">#オシャレ</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fa-solid fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">2,813</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥6,480</div>
+                                        <div class="price-reward">1%獲得(64円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://static.tips.jp/2024/10/01/jLQc4p2KnXQue6pSav1obebOWjinlzqa.png" alt="T">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">T</div>
+                                        <div class="article-date">2024/10/01 19:45</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="fa-regular fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード3 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2025/02/05/fcWXuJM4rZMYtYgLTozPiLggdRBVMdrz.png" alt="法人口座開設">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">ビジネス</div>
+                                <h2 class="article-title">法人を作ったけど銀行口座が開設できない！ そんなあなたのための解決策（元銀行員監修）</h2>
+                                <div class="article-tags">
+                                    <span class="tag">#口座開設</span>
+                                    <span class="tag">#法人口座開設</span>
+                                    <span class="tag">#法人口座</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fa-solid fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">0</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥2,880</div>
+                                        <div class="price-reward">1%獲得(28円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://via.placeholder.com/30x30?text=User" alt="どらねこ">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">どらねこ</div>
+                                        <div class="article-date">2025/02/06 00:31</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="fa-regular fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード4 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2023/08/31/FJzYZ8JtYu2xrtL7O1ysQbinrjSO8ld9.png" alt="Twitter運用術">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">ビジネス</div>
+                                <h2 class="article-title">〖The. 〗 "複数アカウント&最短1ヶ月で"月収100万円を達成した、Twitter運用術</h2>
+                                <div class="article-rating">
+                                    <div class="star-rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
+                                    </div>
+                                    <span class="rating-value">4.8</span>
+                                    <span class="rating-count">(39件)</span>
+                                </div>
+                                <div class="article-tags">
+                                    <span class="tag">#Twitter</span>
+                                    <span class="tag">#副業</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fa-solid fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">12,791</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥49,800</div>
+                                        <div class="price-reward">1%獲得(498円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://static.tips.jp/2023/04/15/wJDeEkaAMm1eB6415stBjZxJAA9YUok2.png" alt="なまいきくん">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">なまいきくん</div>
+                                        <div class="article-date">2023/09/01 19:00</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="fa-regular fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード5 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2023/12/19/EM6y2sHv1QygsIlwKgvodPuiON5ImdIu.png" alt="副業講座">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">ビジネス</div>
+                                <h2 class="article-title">コンテンツ評価総合1位〖累計5000部突破〗副業初心者向けフリーランス養成講座</h2>
+                                <div class="article-rating">
+                                    <div class="star-rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="rating-value">5</span>
+                                    <span class="rating-count">(11件)</span>
+                                </div>
+                                <div class="article-tags">
+                                    <span class="tag">#副業</span>
+                                    <span class="tag">#ネット副業</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fa-solid fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">471</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥18,900</div>
+                                        <div class="price-reward">1%獲得(189円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://static.tips.jp/2023/12/19/aRqZGZVGzq07FnlpQn9Z5Us1FI0sP2ua.png" alt="副業オタク">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">副業オタク</div>
+                                        <div class="article-date">2023/12/31 22:23</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="fa-regular fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード6 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2025/02/21/CEKSxlh2EaOCsnOpnEIyEjsRBKRQOzEH.png" alt="AI物販">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">ビジネス</div>
+                                <h2 class="article-title">〖130部完売✨〗AI×物販×コピペで月10万を生み出す在宅ワークマニュアル〖スキル不要！〗</h2>
+                                <div class="article-tags">
+                                    <span class="tag">#AI</span>
+                                    <span class="tag">#物販</span>
+                                    <span class="tag">#在宅ワーク</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fa-solid fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">428</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥29,800</div>
+                                        <div class="price-reward">1%獲得(298円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://static.tips.jp/2023/12/25/SmKKIgvQWGKzW5a8YydX5SUxxGdjGxWR.png" alt="みゆき">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">みゆき</div>
+                                        <div class="article-date">2025/02/21 19:09</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="fa-regular fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード7 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2023/03/02/sZZjNWoaYP2LOPLdtA7IG2YUBcYABmW8.png" alt="バイナリーオプション">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">マネー</div>
+                                <h2 class="article-title">ローソク足の哲学～How to Beat Binary Options～</h2>
+                                <div class="article-tags">
+                                    <span class="tag">#FX</span>
+                                    <span class="tag">#バイナリーオプション</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fa-solid fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">5,693</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥30,000</div>
+                                        <div class="price-reward">1%獲得(300円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://static.tips.jp/2023/02/22/CPk2dYQd0Vr3JfUH6YPoG3lA5CODJRxE.png" alt="Profilingk">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">Profilingk</div>
+                                        <div class="article-date">2023/03/04 18:00</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="fa-regular fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード8 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2024/10/16/j8f9fMoPazdzHuoVVPlavLgraSrep1qp.png" alt="マーケティング">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">ビジネス</div>
+                                <h2 class="article-title">〜三刀流〜月100〜300万を安定して売る「低単価×中単価×高単価」マーケティング</h2>
+                                <div class="article-tags">
+                                    <span class="tag">#マーケティング</span>
+                                    <span class="tag">#SNSマーケティング</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fa-solid fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">240</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥49,800</div>
+                                        <div class="price-reward">1%獲得(498円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://static.tips.jp/2023/06/08/JhQHUbS1ZFDIXcLTajEtL3w8k8F3PyeA.png" alt="かけち">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">かけち</div>
+                                        <div class="article-date">2024/10/18 18:00</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="fa-regular fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード9 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2025/02/08/cnhBCqqJngJojO0bSQ79PrNePvKJ5y9U.png" alt="ファッションアイテム">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">恋愛</div>
+                                <h2 class="article-title">〖最速1日で女ウケコーデGET〗究極モテファッションアイテム大全 ◆モテアイテム130越え</h2>
+                                <div class="article-rating">
+                                    <div class="star-rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="rating-value">5</span>
+                                    <span class="rating-count">(4件)</span>
+                                </div>
+                                <div class="article-tags">
+                                    <span class="tag">#ファッション</span>
+                                    <span class="tag">#メンズファッション</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fa-solid fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">1,163</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥14,980</div>
+                                        <div class="price-reward">1%獲得(149円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://static.tips.jp/2024/07/12/3tGUJhJwuPJ40SDWrVW2ZAFZaMSt2f2H.png" alt="ラテス">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">ラテス</div>
+                                        <div class="article-date">2025/02/08 19:05</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="fa-regular fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード10 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2025/01/08/TlgVs4db6kbEEie6C2V5qHqtw2KcSEyA.png" alt="AI動画">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">AIテクノロジー</div>
+                                <h2 class="article-title">〖超☆わくわく〗AI動画でCM、MV、アニメ、VR風の映像制作も自由自在！</h2>
+                                <div class="article-tags">
+                                    <span class="tag">#AI</span>
+                                    <span class="tag">#動画編集</span>
+                                    <span class="tag">#AI動画</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fa-solid fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">328</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥51,800</div>
+                                        <div class="price-reward">1%獲得(518円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://static.tips.jp/2024/08/30/GeolZxtwknjwcJqnKZ8MNGQGKOTKmAvl.png" alt="妖精アーヤ">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">妖精アーヤ</div>
+                                        <div class="article-date">2025/01/08 21:44</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="fa-regular fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード11 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2024/11/04/apPtvUOm6fgMAGqo4a26NuVi1kDMVtLw.png" alt="副業マニュアル">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">ビジネス</div>
+                                <h2 class="article-title">〖副業初心者向け〗複業マニュアル完全版〜最小労力で月20万を安定化〜</h2>
+                                <div class="article-tags">
+                                    <span class="tag">#副業</span>
+                                    <span class="tag">#在宅ワーク</span>
+                                    <span class="tag">#ネットビジネス</span>
+                                </div>
+                                <div class="article-meta">
+                                    <div class="article-claps">
+                                        <i class="fa-solid fa-hands-clapping clap-icon"></i>
+                                        <span class="clap-count">172</span>
+                                    </div>
+                                    <div class="article-price">
+                                        <div class="price-value">¥12,800</div>
+                                        <div class="price-reward">1%獲得(128円相当)</div>
+                                    </div>
+                                </div>
+                                <div class="article-user">
+                                    <div class="user-avatar">
+                                        <img src="https://static.tips.jp/2024/07/13/1geMQigxxVoc523q4FsqJURElHJJ7de2.png" alt="じぇい">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">じぇい</div>
+                                        <div class="article-date">2024/11/04 21:53</div>
+                                    </div>
+                                    <button class="favorite-button"><i class="fa-regular fa-heart"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 記事カード12 -->
+                        <div class="article-card">
+                            <div class="article-image">
+                                <img src="https://static.tips.jp/2024/03/26/2rWSSo4ZdguKl3qUGdvHMhdtohmb9u2x.png" alt="体質改善">
+                            </div>
+                            <div class="article-content">
+                                <div class="article-category">美容・健康</div>
+                                <h2 class="article-title">『 5万人以上が変わった！１ヶ月で3キロやせてお肌もツヤツヤ♪ズボラ40代でもできる、５ステップの楽ちん体質改善メソッド 』</h2>
+                                <!-- 以下、記事カードが続く想定 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">ホーム</a>
+                <a href="#">記事</a>
+                <a href="#">アフィリエイト</a>
+                <a href="#">ご利用ガイド</a>
+                <a href="#">プラス会員</a>
+                <a href="#">プライバシー</a>
+                <a href="#">ご利用規約</a>
+                <a href="#">運営会社</a>
+                <a href="#">お知らせ</a>
+                <a href="#">お問い合わせ</a>
+                <a href="#">特商法表記</a>
+            </div>
+            <div class="footer-logo">
+                <img src="https://via.placeholder.com/120x40?text=Tips+Clone" alt="Tips Clone">
+            </div>
+        </div>
+    </footer>
+
     <script src="js/common.js"></script>
-    <script src="js/home.js"></script>
 </body>
 </html>
