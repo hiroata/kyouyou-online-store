@@ -1,9 +1,5 @@
 // common.js
 document.addEventListener('DOMContentLoaded', function() {
-    // ヘッダーとフッターの読み込み
-    loadComponent('header-placeholder', 'components/header.html');
-    loadComponent('footer-placeholder', 'components/footer.html');
-    
     // ログインモーダル
     const modal = document.getElementById("loginModal");
     const loginBtn = document.getElementById("loginBtn");
@@ -83,39 +79,22 @@ document.addEventListener('DOMContentLoaded', function() {
             icon.classList.toggle('fas');
         });
     });
-});
-
-// コンポーネント読み込み関数
-function loadComponent(targetId, url) {
-    const target = document.getElementById(targetId);
-    if (!target) return;
     
-    fetch(url)
-        .then(response => response.text())
-        .then(data => {
-            target.innerHTML = data;
+    // タブ切り替え機能
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // アクティブなタブボタンを更新
+            document.querySelector('.tab-btn.active').classList.remove('active');
+            this.classList.add('active');
             
-            // ヘッダーが読み込まれた後にログインボタンのイベントを再設定
-            if (targetId === 'header-placeholder') {
-                const loginBtn = document.getElementById("loginBtn");
-                const userProfile = document.getElementById("userProfile");
-                
-                if (loginBtn) {
-                    loginBtn.addEventListener("click", function(e) {
-                        e.preventDefault();
-                        const modal = document.getElementById("loginModal");
-                        modal.style.display = "block";
-                    });
-                }
-                
-                // ログイン状態の更新
-                updateLoginState();
-            }
-        })
-        .catch(error => {
-            console.error(`コンポーネントの読み込みに失敗しました: ${url}`, error);
+            // タブコンテンツを切り替え
+            const tabId = this.getAttribute('data-tab');
+            document.querySelector('.tab-content.active').classList.remove('active');
+            document.getElementById(tabId).classList.add('active');
         });
-}
+    });
+});
 
 // ログイン状態によるUI更新
 function updateLoginState() {
