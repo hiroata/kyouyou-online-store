@@ -32,9 +32,7 @@
         <div class="auth-container">
             <div class="auth-card">
                 <h2>ログイン</h2>
-                
                 <div id="error-messages"></div>
-                
                 <form id="login-form">
                     <div class="form-group">
                         <label for="email">メールアドレス</label>
@@ -45,7 +43,6 @@
                             required
                         >
                     </div>
-                    
                     <div class="form-group">
                         <label for="password">パスワード</label>
                         <input
@@ -55,19 +52,15 @@
                             required
                         >
                     </div>
-                    
                     <div class="remember-me">
                         <input type="checkbox" id="remember" name="remember">
                         <label for="remember">ログイン状態を保持する</label>
                     </div>
-                    
                     <div class="forgot-password">
                         <a href="#">パスワードをお忘れですか？</a>
                     </div>
-                    
                     <button type="submit" class="auth-button" id="submit-btn">ログイン</button>
                 </form>
-                
                 <div class="auth-footer">
                     アカウントをお持ちでないですか？ <a href="register.html">新規登録</a>
                 </div>
@@ -93,65 +86,63 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const loginForm = document.getElementById('login-form');
-            const errorMessages = document.getElementById('error-messages');
-            const submitBtn = document.getElementById('submit-btn');
-            
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                errorMessages.innerHTML = '';
-                
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-                
-                // バリデーション
-                const errors = [];
-                
-                if (!email.trim()) {
-                    errors.push('メールアドレスを入力してください');
-                }
-                
-                if (!password) {
-                    errors.push('パスワードを入力してください');
-                }
-                
-                if (errors.length > 0) {
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('login-form');
+        const errorMessages = document.getElementById('error-messages');
+        const submitBtn = document.getElementById('submit-btn');
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            errorMessages.innerHTML = '';
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // バリデーション
+            const errors = [];
+            if (!email.trim()) {
+                errors.push('メールアドレスを入力してください');
+            }
+            if (!password) {
+                errors.push('パスワードを入力してください');
+            }
+
+            if (errors.length > 0) {
+                errorMessages.innerHTML = `
+                    <div class="error-alert">
+                        <ul>
+                            ${errors.map(error => `<li>${error}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                return;
+            }
+
+            // ログイン処理（デモ）
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'ログイン中...';
+
+            setTimeout(() => {
+                // デモ用のログイン判定（実際のアプリでは API 呼び出しが必要）
+                if (email === 'demo@example.com' && password === 'password') {
+                    // 成功：トップページにリダイレクト
+                    localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('username', 'デモユーザー');
+                    window.location.href = 'index.html';
+                } else {
+                    // 失敗：エラーメッセージを表示
                     errorMessages.innerHTML = `
                         <div class="error-alert">
-                            <ul>
-                                ${errors.map(error => `<li>${error}</li>`).join('')}
-                            </ul>
+                            <p>メールアドレスまたはパスワードが正しくありません。</p>
+                            <p>※デモ用アカウント: demo@example.com / password</p>
                         </div>
                     `;
-                    return;
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'ログイン';
                 }
-                
-                // ログイン処理（デモ）
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'ログイン中...';
-                
-                setTimeout(() => {
-                    // デモ用のログイン判定（実際のアプリでは API 呼び出しが必要）
-                    if (email === 'demo@example.com' && password === 'password') {
-                        // 成功：トップページにリダイレクト
-                        localStorage.setItem('isLoggedIn', 'true');
-                        localStorage.setItem('username', 'デモユーザー');
-                        window.location.href = 'index.html';
-                    } else {
-                        // 失敗：エラーメッセージを表示
-                        errorMessages.innerHTML = `
-                            <div class="error-alert">
-                                <p>メールアドレスまたはパスワードが正しくありません。</p>
-                                <p>※デモ用アカウント: demo@example.com / password</p>
-                            </div>
-                        `;
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = 'ログイン';
-                    }
-                }, 1500);
-            });
+            }, 1500);
         });
+    });
     </script>
 </body>
 </html>
