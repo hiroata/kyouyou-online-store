@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  img {
+    @apply max-w-full block;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+}
+
+@layer components {
+  /* ヘッダーとフッター */
+  .header, .footer {
+    @apply bg-white border-b border-gray-200;
+  }
+
+  .logo img {
+    @apply h-[50px];
+  }
+
+  /* 検索バー */
+  .search-bar {
+    @apply flex items-center;
+  }
+
+  .search-bar input {
+    @apply p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+
+  .search-bar button {
+    @apply p-2 px-4 border border-l-0 border-gray-300 bg-gray-100 hover:bg-gray-200 cursor-pointer rounded-r-md;
+  }
+
+  /* 認証ボタン */
+  .auth-buttons a {
+    @apply ml-2 p-2 px-4 border border-gray-300 bg-white rounded-md hover:bg-gray-50 transition-colors;
+  }
+
+  /* 記事カード */
+  .article-card {
+    @apply bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-4;
+  }
+
+  .article-title {
+    @apply text-xl font-bold mb-2;
+  }
+
+  .article-meta {
+    @apply text-sm text-gray-600 flex items-center justify-between;
+  }
+
+  /* ボタン */
+  .btn-primary {
+    @apply bg-primary text-gray-900 py-2 px-4 rounded-md hover:bg-primary/90 transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white py-2 px-4 rounded-md hover:bg-secondary/90 transition-colors;
+  }
+
+  /* タグ */
+  .tag {
+    @apply inline-block bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-sm mr-2;
+  }
+
+  /* レーティング */
+  .star-rating {
+    @apply flex items-center text-primary;
+  }
+
+  /* 目次 */
+  .article-toc {
+    @apply mt-6 p-4 bg-gray-50 rounded-md;
+  }
+
+  .article-toc ul {
+    @apply ml-4 mt-2 space-y-2;
+  }
+
+  /* レイアウト */
+  .content-layout {
+    @apply grid grid-cols-1 lg:grid-cols-3 gap-8;
+  }
+
+  .main-content {
+    @apply lg:col-span-2;
+  }
+
+  .sidebar {
+    @apply lg:col-span-1;
+  }
+}
